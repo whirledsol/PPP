@@ -214,6 +214,8 @@ def setupVariables():
             plex_convert = "u2w"
 
     playlist = [convertPath(track, plex_convert, False) for track in playlist]
+    
+    #print('playlist',playlist)
 
     plex_prepend = os.path.commonpath(playlist)
 
@@ -262,6 +264,11 @@ def setupVariables():
             local_convert = 'u2w'
 
     playlist = [convertPath(track, local_convert, False) for track in playlist]
+    
+    if (len(playlist) > 0 and playlist[0] == '#EXTM3U'):
+        playlist = playlist[1:]
+
+    #print('playlist',playlist)
 
     local_prepend = os.path.commonpath(playlist)
 
